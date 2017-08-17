@@ -1,0 +1,47 @@
+<div class="main container">
+
+    <div class="card">
+        <div class="card-body">
+            <form method="post" action="/posts">
+
+                <h6> Login com o Facebook</h6>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Insira o Email">
+
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                           placeholder="Insira o Senha">
+                </div>
+
+                <button class="btn btn-primary" type="submit">ENVIAR</button>
+            </form>
+        </div>
+    </div>
+
+    {{#if error}}
+        <h4 class="mt-3"> {{error}}</h4>
+    {{/if}}
+
+    {{#if results}}
+
+        <div class="my-3">
+            <h1> Resultados</h1>
+
+
+            {{#each results as |result x |}}
+                <div class="result-wrapper">
+                    <h6 class="mt-2 mb-1">{{result.title}}</h6>
+
+                    <p class="time ">{{result.time}}</p>
+
+                    <p class="text ">{{result.text}}</p>
+                </div>
+            {{/each}}
+        </div>
+    {{/if}}
+
+</div>
