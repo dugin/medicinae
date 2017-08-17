@@ -17,11 +17,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(bodyParser.json());
 
-app.use(cors({credentials: true, origin: 'http://localhost:8001'}));
+app.use(cors());
 
 app.use(methodOverride());
-
-// app.use(express.static('', {redirect: false}));
 
 app.use(session({
         secret: "medicinae",
@@ -33,16 +31,16 @@ app.use(session({
 app.use(express.static(path.join(__dirname, "../../public")));
 
 app.set("views", path.join(__dirname, '../../views'));
+
 app.engine(".hbs", exphbs({
     defaultLayout: 'index',
     extname: '.hbs',
     layoutsDir: path.join(__dirname, '../../views', 'layouts')
 }));
+
 app.set("view engine", ".hbs");
 
-
 app.use(posts);
-
 
 app.get('*', (req, res, next) => {
 

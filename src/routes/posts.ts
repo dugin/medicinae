@@ -14,7 +14,6 @@ posts.get('/posts', checkSession, (req, res, next) => {
         waitTimeout: 7000
     });
 
-    console.log('nightmare');
     nightmare
         .goto('https://www.facebook.com/')
         .type('#email', req.session.login.email)
@@ -56,7 +55,6 @@ posts.get('/posts', checkSession, (req, res, next) => {
             res.render("main", {results})
         })
         .catch((error) => {
-
             res.render("main", {error: 'Senha ou email inválido'})
         })
 
@@ -71,8 +69,6 @@ posts.post('/posts', (req, res, next) => {
     };
 
     res.redirect('/posts');
-
-
 });
 
 export default posts;
